@@ -37,15 +37,39 @@ namespace VectorMath
         /// <summary>
         /// Constructs a new instance of Vector3 with
         /// the supplied values for X, Y, and Z.
-        /// <param name="X">A double precision number for the x component of the vector.</param>
-        /// <param name="Y">A double precision number for the y component of the vector.</param>
-        /// <param name="Z">A double precision number for the z component of the vector.</param>
+        /// <param name="x">A double precision number for the x component of the vector.</param>
+        /// <param name="y">A double precision number for the y component of the vector.</param>
+        /// <param name="z">A double precision number for the z component of the vector.</param>
         /// </summary>
         public Vector3(double x, double y, double z)
         {
             this.X = x;
             this.Y = y;
             this.Z = z;
+        }
+
+        /// <summary>
+        /// Gets the magnitude of this Vector
+        /// </summary>
+        public double Magnitude {
+            get {
+                return Math.Sqrt(this.X * this.X + this.Y * this.Y + this.Z * this.Z);
+            }
+        }
+
+        /// <summary>
+        /// Calculates the cross product of this and
+        /// the other vector (maybe?)
+        /// </summary>
+        /// <param name="other">The vector to cross with the original vector</param>
+        /// <returns>The cross product</returns>
+        public Vector3 CrossProduct(Vector3 other)
+        {
+            return new Vector3(
+                this.Y * other.Z - this.Z * other.Y,
+                this.Z * other.X - this.X * other.Z,
+                this.X * other.Y - this.Y * other.X
+                );
         }
     }
 }
